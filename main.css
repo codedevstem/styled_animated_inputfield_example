@@ -1,0 +1,158 @@
+:root {
+    --primary-color: rgb(63, 1, 146);
+    --secondary-color: #57d4ec;
+    --error-color: rgb(230, 164, 172);
+    --openEmailInputWidth: 180px;
+    --closedEmailInputWidth: 80px;
+    --inputBorderRadius: 25px;
+}
+
+head, body {
+    margin: 0;
+    padding: 0;
+}
+
+#background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    width: 100vw;
+    height: 100vh;
+}
+
+#emailSubmitGroup {
+    display: flex;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#emailInput {
+    background-color: transparent;
+    padding: .5em;
+    border-radius: var(--inputBorderRadius);
+    border-color: var(--secondary-color);
+    border-style: solid;
+    outline-color: var(--secondary-color);
+    outline-width: 0;
+}
+
+#emailInput::placeholder {
+    color: var(--secondary-color);
+}
+
+#emailInput:focus {
+    border-color: var(--secondary-color);
+}
+
+.openEmailInput {
+    width: var(--openEmailInputWidth);
+    text-align: left;
+    color: var(--secondary-color);
+    font-weight: normal;
+    cursor: text;
+}
+
+.closedEmailInput {
+    width: var(--closedEmailInputWidth);
+    color: var(--secondary-color);
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#sendInput {
+    border-style: solid;
+    border-radius: var(--inputBorderRadius);
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: .5em;
+    width: 60px;
+    position: absolute;
+    text-align: center;
+}
+
+.openSendInput {
+    width: var(--openEmailInputWidth);
+    text-align: left;
+    color: var(--secondary-color);
+    font-weight: normal;
+    display: block;
+    right: 0;
+    cursor: pointer;
+}
+
+.closedSendInput {
+    display: none;
+    width: var(--closedEmailInputWidth);
+    color: var(--secondary-color);
+    text-align: center;
+    font-weight: bold;
+    right: -60px;
+}
+
+
+#validationErrorContainer {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#validationErrorMessage {
+    background-color: rgb(230, 143, 158);
+    width: var(--openEmailInputWidth);
+    border-radius: 10px;
+    padding: 1em;
+    text-align: center;
+    font-family: Arial, serif;
+}
+
+/** open email input field animation class */
+.openEmailInputAnimation {
+    animation-name: openEmailInputAnimation;
+    animation-duration: 250ms;
+    animation-timing-function: linear;
+}
+@keyframes openEmailInputAnimation {
+    from {
+        width: var(--closedEmailInputWidth);
+    }   
+    to {
+        width: var(--openEmailInputWidth);
+    }
+}
+
+/** close email input field animation class */
+.closeEmailInputAnimation {
+    animation-name: closeEmailInputAnimation;
+    animation-duration: 250ms;
+    animation-timing-function: linear;
+}
+@keyframes closeEmailInputAnimation {
+    from {
+        width: var(--openEmailInputWidth);
+    }
+    to {
+        width: var(--closedEmailInputWidth);
+    }
+}
+
+/** transition in send input animation class */
+.transitionInSendInputAnimation {
+    animation-name: transitionInSendInputAnimation;
+    animation-duration: 250ms;
+    animation-timing-function: linear;
+}
+@keyframes transitionInSendInputAnimation {
+    0% {
+        right: -60px;
+    }
+    60% {
+        right: -60px;
+    }
+    to {
+        right: 0;
+    }
+}
